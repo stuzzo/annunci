@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('static/main.css') }}"/>
+    {% endblock %}
+</head>
+<body>
+<main class="container-fluid">
+
+    {% block header %}
+        {% include 'partials/header.html.twig' %}
+    {% endblock %}
+
+    {% block body %}
+
+    {% endblock %}
+
+    {% block footer %}
+        {% include 'partials/footer.html.twig' %}
+    {% endblock %}
+
+</main>
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('static/main.js') }}"></script>
+{% endblock %}
+
+</body>
 </html>
