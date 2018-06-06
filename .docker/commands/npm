@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -v $(pwd):/app -w /app --user 1000 -it -p 35729:35729 node:8 bash

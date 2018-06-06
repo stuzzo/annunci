@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+
+    php:
+        container_name: ${PROJECT_NAME}_php
+        build:
+            context: ./../
+            dockerfile: .docker/build/php/Dockerfile
+            args:
+                - IMAGE=webdevops/php-apache-dev:7.1
+                - APP_PATH=${APP_PATH}
+                - PROJECT_USER=${PROJECT_USER}
+        environment:
+            - WEB_ALIAS_DOMAIN=${APP_HOST}
+            - WEB_DOCUMENT_ROOT=/app/${PUBLIC_PATH}
+            - WEB_DOCUMENT_INDEX=index.php
+            - LOG_STDOUT=/app/.docker/logs/stdout.log
+            - LOG_STDERR=/app/.docker/logs/stderr.log
+        volumes:
+            - ./../:/app
+            - "./build/php/.bash_history:/home/application/.bash_history"
+        links:
+            - database
+        ports:
+            - "80:80"
+            - "443:443"
+
+    database:
+        container_name: ${PROJECT_NAME}_database
+        build:
+            context: build/database
+        volumes:
+            - ./../.database:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: ${PROJECT_NAME}_phpmyadmin
+        environment:
+            PMA_HOST: database
+        ports:
+            - "8080:80"
+        links:
+            - database
+
+networks:
+   default:
+       external:
+           name: ${PROJECT_NAME}_default

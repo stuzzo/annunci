@@ -1,0 +1,16 @@
+#!/bin/bash
+
+
+source "`dirname \"$0\"`/read-env-config"
+
+if docker network ls | grep ${PROJECT_NAME}_default;
+then
+  echo "Network already defined"
+else
+  docker network create ${PROJECT_NAME}_default
+fi
+
+cd "`dirname \"$0\"`/.."
+rm logs/*.log -f
+docker-compose up -d --build --force-recreate --remove-orphans
+docker-compose exec --user ${PROJECT_USER} php bash -c "composer install --prefer-dist --optimize-autoloader"
