@@ -61,7 +61,7 @@
     "config": "ciffi-builder config --env",
     "assets": "ciffi-builder assets",
     "prettier": "prettier --write --single-quote '**/*.{jsx,js,json,scss}'",
-    "precommit": "lint-staged"
+    "precommit": "pretty-quick --staged"
   },
   "lint-staged": {
     "*.{js,json,css,md}": [
