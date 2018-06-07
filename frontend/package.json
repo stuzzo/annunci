@@ -54,13 +54,13 @@
     "reset-css": "^2.2.1"
   },
   "scripts": {
-    "start": "./node_modules/.bin/ciffi-builder start",
-    "dev": "./node_modules/.bin/ciffi-builder dev",
-    "build": "./node_modules/.bin/ciffi-builder build $1",
-    "jsonize": "./node_modules/.bin/ciffi-jsonize",
-    "config": "./node_modules/.bin/ciffi-builder config $1",
-    "assets": "./node_modules/.bin/ciffi-builder assets $1",
-    "prettier": "./node_modules/.bin/prettier --write --single-quote '**/*.{jsx,js,json,scss}'",
+    "start": "ciffi-builder start",
+    "dev": "ciffi-builder dev",
+    "build": "ciffi-builder build --env",
+    "jsonize": "ciffi-jsonize",
+    "config": "ciffi-builder config --env",
+    "assets": "ciffi-builder assets",
+    "prettier": "prettier --write --single-quote '**/*.{jsx,js,json,scss}'",
     "precommit": "pretty-quick --staged"
   }
 }
