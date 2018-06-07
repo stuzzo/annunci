@@ -28,10 +28,12 @@
     "eslint": "^4.18.2",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-react": "^7.7.0",
+    "husky": "^0.14.3",
     "livereload": "^0.7.0",
     "node-sass": "^4.7.2",
     "postcss-cli": "^4.1.1",
     "prettier": "^1.11.1",
+    "pretty-quick": "^1.6.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.2",
     "styled-components": "^3.3.0",
@@ -58,6 +60,7 @@
     "jsonize": "./node_modules/.bin/ciffi-jsonize",
     "config": "./node_modules/.bin/ciffi-builder config $1",
     "assets": "./node_modules/.bin/ciffi-builder assets $1",
-    "prettier": "./node_modules/.bin/prettier --write --single-quote '**/*.{jsx,js,json,scss}'"
+    "prettier": "./node_modules/.bin/prettier --write --single-quote '**/*.{jsx,js,json,scss}'",
+    "precommit": "pretty-quick --staged"
   }
 }
