@@ -12,3 +12,5 @@ ll
 chmod 777 -R app/
 composer create-project symfony/website-skeleton template
 exit
+composer install
+exit

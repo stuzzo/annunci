@@ -1,10 +1,10 @@
 const Config = {
   projectName: 'symfony-template',
   env: 'dev',
-  baseUrl: 'http://symfony-template.local',
-  apiUrl: 'http://symfony-template.local/',
-  shareUrl: 'http://symfony-template.local/',
-  assetsUrl: 'http://symfony-template.local/src/'
+  baseUrl: 'http://localhost',
+  apiUrl: 'http://localhost/',
+  shareUrl: 'http://localhost/',
+  assetsUrl: 'http://localhost/static/'
 };
 
 export default Config;
